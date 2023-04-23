@@ -1,0 +1,182 @@
+/*half of the page */
+.challenge-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* parent to container*/
+.challenge-card {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 24px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+/*the card for each challenge */
+.challenge-card-container {
+    display: flex;
+    justify-content: space-between;
+    /*margin-bottom: 12px;*/
+    font-size: 4px;
+}
+
+/*was causing the issue*/
+
+/*.challenge-icon {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*}*/
+
+/*play button*/
+.challenge-card__play-game-button-small {
+    font-size: 12px;
+    /*padding: 4px 8px;*/
+}
+
+/*gem font inside all challenges */
+.challenge-card__gems {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/*versus*/
+.versus {
+    margin-top: 50px;
+    text-align: center;
+    justify-content: center;
+}
+
+
+/*h3 tags */
+h3 {
+   font-size: 15px;
+}
+
+/*h3 inside challenge results */
+/*.challenge-content-container h3 {*/
+/*    display: inline-block;*/
+/*    margin-right: 10px;*/
+/*}*/
+
+
+/*first box welcome */
+.challenge-screen__new-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+    justify-content: space-between;
+    margin-top: 0;
+    padding: 20px;
+    width: 700px;
+    height: 100px;
+    border-radius: 2%;
+}
+
+/*box for challenge friends*/
+.challenge-upgrade__new-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 700px;
+    height: 100px;
+    border-radius: 2%;
+}
+
+/*icon for challenge box friend */
+.challenge-upgrade__new-box__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    color: purple;
+    font-size: 2.5em;
+}
+
+/*challenge friend again...*/
+.challenge-upgrade__new-box__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*margin-right: 10px;*/
+    text-align: center;
+    align-items: center;
+}
+
+ /*challenge your freind*/
+.challenge-upgrade__new-box__text h2 {
+    display: flex;
+    margin-left: 100px;
+    font-size: 1.5em;
+    color: purple;
+    text-align: center;
+}
+
+/* What better way */
+.challenge-upgrade__new-box__text p {
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    margin-left: 20px;
+}
+
+/* challenge btn*/
+.challenge-upgrade__new-box__button {
+    background-color: purple;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+/* welcome */
+.challenge-current-gems{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lavenderblush;
+    border-radius: 20px;
+    padding: 20px;
+    /*margin: 20px;*/
+    text-decoration-color: purple;
+    color: purple;
+}
+
+/*welcome gems total*/
+.challenge-current-gems i.bi-suit-diamond-fill {
+    color: purple;
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+
+/*.challenge-welcome-message{*/
+/*    margin: 0;*/
+/*    flex: 1;*/
+/*    text-align: center;*/
+/*    align-items: center;*/
+/*    margin-right: 30px;*/
+/*}*/
+
+/* icons */
+.challenge-icon img {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+    margin: 10px;
+    border: 2px solid white;
+}
+
+

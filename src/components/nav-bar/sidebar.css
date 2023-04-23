@@ -1,0 +1,38 @@
+.ttr-navigation a > i {
+    width: 40px;
+    text-align: center;
+    margin-left: 30px;
+}
+
+.ttr-navigation li,
+.ttr-navigation a {
+    border: none;
+    text-decoration: none;
+    color: black;
+}
+
+.sidebar-label {
+
+}
+
+.sidebar-icon {
+    background-color: transparent;
+    color:black;
+}
+
+span {
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+.list-group-item:hover {
+    cursor:pointer;
+    background: lightgray;
+}
+
+i {
+    background: transparent !important;
+}
+
+
+

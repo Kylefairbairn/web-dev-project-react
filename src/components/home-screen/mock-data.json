@@ -1,0 +1,89 @@
+{
+  "response_code": 0,
+  "results": [
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What word represents the letter &#039;T&#039; in the NATO phonetic alphabet?",
+      "correct_answer": "Tango",
+      "incorrect_answers": ["Target", "Taxi", "Turkey"]
+    },
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What is the Spanish word for &quot;donkey&quot;?",
+      "correct_answer": "Burro",
+      "incorrect_answers": ["Caballo", "Toro", "Perro"]
+    },
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which one of these is not a typical European sword design?",
+      "correct_answer": "Scimitar",
+      "incorrect_answers": ["Falchion", "Ulfberht", "Flamberge"]
+    },
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "According to Sherlock Holmes, &quot;If you eliminate the impossible, whatever remains, however improbable, must be the...&quot;",
+      "correct_answer": "Truth",
+      "incorrect_answers": ["Answer", "Cause", "Source"]
+    },
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "How tall is the Burj Khalifa?",
+      "correct_answer": "2,722 ft",
+      "incorrect_answers": ["2,717 ft", "2,546 ft", "3,024 ft"]
+    },
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which of the following is the IATA code for Manchester Airport?",
+      "correct_answer": "MAN",
+      "incorrect_answers": ["EGLL", "LHR", "EGCC"]
+    },
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What is Cynophobia the fear of?",
+      "correct_answer": "Dogs",
+      "incorrect_answers": ["Birds", "Flying", "Germs"]
+    },
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "How many furlongs are there in a mile?",
+      "correct_answer": "Eight",
+      "incorrect_answers": ["Two", "Four", "Six"]
+    },
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Waluigi&#039;s first appearance was in what game?",
+      "correct_answer": "Mario Tennis 64 (N64)",
+      "incorrect_answers": [
+        "Wario Land: Super Mario Land 3",
+        "Mario Party (N64)",
+        "Super Smash Bros. Ultimate"
+      ]
+    },
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What is the official language of Brazil?",
+      "correct_answer": "Portugese",
+      "incorrect_answers": ["Brazilian", "Spanish", "English"]
+    }
+  ]
+}
