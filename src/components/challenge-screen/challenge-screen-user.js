@@ -3,10 +3,15 @@ import React, {useEffect, useState} from "react";
 import * as service from "../../services/auth-service";
 import * as challengeService from "../../services/challenge-service"
 import "./challenge-screen-user.css"
-import {findAllChallenges} from "../../services/challenge-service";
+import {updateChallenge} from "./challenge-reducer";
+import {useDispatch, useSelector} from "react-redux";
+
+
 
 const ChallengeScreenUser = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch()
+    const currentChallenge = useSelector((state) => state.challenge)
     const [profile, setProfile] = useState({});
     const [challenges, setChallenges] = useState([])
     const [userOne, setUserOne] = useState({})
@@ -19,12 +24,12 @@ const ChallengeScreenUser = () => {
                 setProfile(profile)
 
                 if(profile.role !== "PREMIUM"){
-                    navigate("/trivia/home")
+                    navigate("/home")
                 }
 
                 const allChallenges = await challengeService.findAllChallenges()
                 setChallenges(allChallenges)
-                console.log(profile)
+                // console.log(profile)
 
 
             } catch (e) {
@@ -35,9 +40,22 @@ const ChallengeScreenUser = () => {
     }, [])
 
 
+    console.log(challenges)
+
     const handleCreateChallenge = () => {
         navigate("/challenge/create/user")
     }
+
+    const handlePlayChallenge = (challenge) => {
+
+        console.log(challenge)
+
+        dispatch(updateChallenge({ challengeId: challenge._id, userOne: challenge.userOne,userTwo: challenge.userTwo,game: challenge.game,userOneScore: challenge.userOneScore,userTwoScore:challenge.userTwoScore }))
+        navigate('/battle')
+        // mockgame with input..? and use the game array
+    }
+
+    console.log()
 
     return (
         <div className="challenge-screen">
@@ -67,26 +85,28 @@ const ChallengeScreenUser = () => {
                 {challenges && challenges.map((challenge, index) => (
                     <div key={index} className="challenge-card">
                         <div className="challenge-card-container">
-                            <div className="challenge-icon">
+                            <div className={`challenge-icon challenge-icon-${challenge.isCurrentUserOne ? 'left' : 'right'}`}>
                                 <img src={`/images/${challenge.userOnesProfilePhoto}`} alt=""/>
-                                {profile.username === challenge.userOneUserName ? (<button className="challenge-card__play-game-button-small">Play Game</button>)
-                                : null }
-                                <br />
-                                <h3 className={""} >{challenge.userOneUserName}</h3>
-                                <div className="challenge-card__gems">{challenge.userOneGems} gems</div>
-                            </div>
-                            <div><h3 className={"versus"}>Versus</h3></div>
-                            <div className="challenge-icon">
-                                <img src={`/images/${challenge.userTwosProfilePhoto}`} alt=""/>
-                                <br />
-                                {profile.username === challenge.userTwoUserName ? (
-                                    <button className="challenge-card__play-game-button-small">Play Game</button>
+                                {profile.username === challenge.userOneUserName && challenge.userOneScore === null ? (
+                                    <button onClick={() => handlePlayChallenge(challenge)} className="challenge-card__play-game-button-small">Play Game</button>
                                 ) : null}
-                                <h3 className={""}>{challenge.userTwoUserName}</h3>
+                                <div className="challenge-card__gems">{challenge.userOneGems} gems</div>
+                                <h5>{challenge.userOneUserName}</h5>
+                            </div>
+                            <div><h3 className="versus">Versus</h3></div>
+                            <div className={`challenge-icon challenge-icon-${challenge.isCurrentUserOne ? 'right' : 'left'}`}>
+                                <img src={`/images/${challenge.userTwosProfilePhoto}`} alt=""/>
+                                {profile.username === challenge.userTwoUserName && challenge.userTwoScore === null ? (
+                                    <button onClick={() => handlePlayChallenge(challenge)} className="challenge-card__play-game-button-small">Play Game</button>
+                                ) : null}
+                                {challenge.userTwoScore !== null ? (<div>{challenge.userTwoScore}</div>) : null}
                                 <div className="challenge-card__gems">{challenge.userTwoGems} gems</div>
+                                <h5>{challenge.userTwoUserName}</h5>
                             </div>
                         </div>
                     </div>
+
+
                 ))}
 
 

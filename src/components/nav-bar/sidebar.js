@@ -7,7 +7,7 @@ function Navigation() {
 
     const links = [
         // {label: 'Welcome', icon: 'bi-controller', path: ''},
-        {label: 'Home', icon: 'bi-house-door-fill', path: '/trivia/home'},
+        {label: 'Home', icon: 'bi-house-door-fill', path: '/home'},
         {label: 'Challenge', icon: 'bi-currency-dollar', path: '/trivia/challenge'},
         {label: 'Create A Game', icon: 'bi-play-fill', path: 'trivia/create'},
         // {label: 'Create A Question', icon: 'bi-play-fill', path: 'trivia/customize'},

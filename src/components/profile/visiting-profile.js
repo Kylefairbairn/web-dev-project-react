@@ -1,13 +1,17 @@
-import {Link, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import * as gameService from "../../services/create-game-service";
 import * as friendService from "../../services/friends-service";
 import * as userService from "../../services/users-services";
+import * as service from "../../services/auth-service";
+
 
 const VisitingProfile = () => {
+    const navigate = useNavigate();
     const {uid} = useParams();
     const [user, setUser] = useState(null);
     const [profileLoaded, setProfileLoad] = useState(false);
+    const [profile, setProfile] = useState({});
     const [gamesPlayed, setGamesPlayed] = useState(0);
     const [totalPoints, setTotalPoints] = useState(0);
     const [correctPercentage, setCorrectPercentage] = useState(0);
@@ -18,6 +22,29 @@ const VisitingProfile = () => {
     const [topCategory2Score, setTopCategory2Score] = useState("");
     const [topCategory3Score, setTopCategory3Score] = useState("");
     const [friends, setFriends] = useState([]);
+    const [areFriends, setAreFriends] = useState(false)
+
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const profile = await service.profile()
+                setProfile(profile)
+
+                // if(profile.role !== "PREMIUM"){
+                //     navigate("/home")
+                // }
+
+                // console.log(profile)
+
+
+            } catch (e) {
+                // navigate('/login')
+            }
+        }
+        fetchData()
+    }, [])
+
 
     useEffect(() => {
         let isMounted = true;
@@ -27,6 +54,7 @@ const VisitingProfile = () => {
                 const response = await userService.findUserById(uid);
                 const userProfile = await gameService.getProfileData(response._id);
                 const userFriends = await friendService.findFriendsByUserID(response._id);
+                //const findLoggedInUsersFriends = await
 
                 if (isMounted) {
                     setUser(response);
@@ -86,6 +114,47 @@ const VisitingProfile = () => {
     }, [uid]);
 
 
+    // Add this function to check if a given user is already a friend of the logged-in user
+    function isFriend(userId) {
+        return friends.some(friend => friend._id === userId);
+    }
+
+
+// This is the function that gets called when the "Add Friend" button is clicked
+    async function handleAddFriend(userId) {
+        try {
+
+            console.log(profile)
+            console.log(isFriend(uid))
+
+            if (profile.length !== 0 && !isFriend(uid)) {
+
+                const friendship = {
+                    user: profile._id,
+                    friend: uid
+                }
+                await friendService.createFriend(friendship);
+                setAreFriends(true);
+                // Refresh the list of friends so that the new friend appears
+                const userFriends = await friendService.findFriendsByUserID(user._id);
+                const promises = userFriends.map(async (friend) => {
+                    const friendsData = await userService.findUserById(friend.friend);
+                    return friendsData;
+                });
+                const friendsData = await Promise.all(promises);
+                setFriends(friendsData);
+
+                navigate("/profile")
+            }
+
+
+        } catch (e) {
+            console.log("An error occurred", e);
+        }
+    }
+
+
+
     return (
 
             profileLoaded ? (
@@ -140,6 +209,11 @@ const VisitingProfile = () => {
                         </div>
                     </div>
                 </div>
+                {!isFriend(uid) && (
+                    <button className="btn btn-primary friendbutton" onClick={() => handleAddFriend(uid)}>
+                        Add Friend
+                    </button>
+                )}
                 <div className="friends-list">
                     <h3>Friends: {friends.length} </h3>
                     <div className="row">

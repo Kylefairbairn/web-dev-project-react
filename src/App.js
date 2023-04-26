@@ -6,11 +6,13 @@ import CreateGame from "./components/create-game/create-game";
 import PlayGame from "./components/play-game/play-game";
 import {BrowserRouter} from "react-router-dom";
 import createGameReducer from "./components/create-game/create-game-reducer";
+import createChallengeReducer from "./components/challenge-screen/challenge-reducer"
 import "./App.css"
 import WelcomeScreen from "./components/home-screen/welcome-screen";
 import Board from "./components/leader-board/leader-board";
 import ProfileScreen from "./components/profile/profile-screen";
 import Search from "./components/search/search-bar";
+import Battle from "./components/challenge-screen/battle";
 import Navigation from "./components/nav-bar/sidebar";
 import CreateQuestion from "./components/create-question/create-question";
 import {Login} from "./components/profile/login";
@@ -21,10 +23,12 @@ import EditProfile from "./components/profile/edit-profile";
 import ChallengeScreenNavigation from "./components/challenge-screen/challenge-screen-nav";
 import ChallengeScreenUser from "./components/challenge-screen/challenge-screen-user";
 import ChallengeScreenCreateUser from "./components/challenge-screen/challenge-screen-create-user";
+import AddGems from "./components/home-screen/add-gems";
 
 const store = configureStore({
     reducer: {
-        game: createGameReducer
+        game: createGameReducer,
+        challenge:createChallengeReducer
     }
 })
 
@@ -38,13 +42,15 @@ function App() {
                       <div className="col-xxs-1 col-sm-1 col-md-2 col-lg-1 col-xl-2">
                           <Navigation />
                       </div>
-                      <div className="d-xs-none d-sm-block col-md-10 col-lg-9 col-xl-7">
-                          {/*<Search/>*/}
+                      <div className="d-xs-none d-sm-block col-md-10 col-lg-9 col-xl-7 routes-container">
+
                           <Routes>
 
                               <Route path="/" element={<WelcomeScreen />} />
-                              <Route path="/trivia/home" element={<WelcomeScreen />} />
+                              <Route path="/home" element={<WelcomeScreen />} />
                               <Route path="/login" element={<Login/>}/>
+                              <Route path="/gems" element={<AddGems/>}/>
+                              <Route path="/battle" element={<Battle/>}/>
                               <Route path="/trivia/challenge" element={<ChallengeScreenNavigation/>}/>
                               <Route path="challenge/user" element={<ChallengeScreenUser/>}/>
                               <Route path="challenge/create/user" element={<ChallengeScreenCreateUser/>}/>
@@ -58,7 +64,7 @@ function App() {
                               <Route path="/signup" element={<Signup />} />
                           </Routes>
                       </div>
-                      <div className="d-none d-md-block col-md-2 col-lg-3 col-xl-3">
+                      <div className="d-none d-md-block col-md-2 col-lg-3 col-xl-3 board">
                           <Board />
                       </div>
                   </div>

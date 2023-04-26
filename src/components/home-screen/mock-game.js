@@ -38,7 +38,7 @@ const PlayGameMock = () => {
         <div>
             {showScore ? (
                 <div className="score-section-after"> You scored {score} out of {maxQuestions}
-                <button className="pop-up-sign-up">Sign Up Now !</button>
+                <button className="pop-up-sign-up rounded-pill">Sign Up Now !</button>
                 </div>
                 ) : (
             <>

@@ -18,26 +18,29 @@
     margin-bottom: 20px;
 }
 
+h5 {
+    font-size: 12px!important;
+}
+
 /*the card for each challenge */
 .challenge-card-container {
     display: flex;
     justify-content: space-between;
     /*margin-bottom: 12px;*/
-    font-size: 4px;
+    font-size: 10px;
 }
-
-/*was causing the issue*/
-
-/*.challenge-icon {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    align-items: center;*/
-/*}*/
 
 /*play button*/
 .challenge-card__play-game-button-small {
-    font-size: 12px;
-    /*padding: 4px 8px;*/
+    /*font-size: 12px;*/
+    /*display: block;*/
+    /*margin-top: 10px;*/
+    position: absolute;
+    text-align: center;
+    height: 25px;
+    width: 50px;
+    bottom: 0;
+
 }
 
 /*gem font inside all challenges */
@@ -171,12 +174,27 @@ h3 {
 /*}*/
 
 /* icons */
+/*.challenge-icon img {*/
+/*    max-width: 50px;*/
+/*    max-height: 50px;*/
+/*    border-radius: 50%;*/
+/*    margin: 10px;*/
+/*    border: 2px solid white;*/
+/*}*/
+
+
+.challenge-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
 .challenge-icon img {
+    /*margin-bottom: 10px;*/
     max-width: 50px;
     max-height: 50px;
     border-radius: 50%;
-    margin: 10px;
-    border: 2px solid white;
 }
-
 

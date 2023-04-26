@@ -10,6 +10,39 @@
 /* padding: 0;*/
 /*}*/
 
+
+/*.Board {*/
+/*    width: 100%;*/
+/*    max-width: 800px;*/
+/*    margin: 0 auto;*/
+/*}*/
+
+
+@media (max-width: 992px) {
+    .board {
+        display: none;
+    }
+}
+
+@media (max-width: 992px) {
+    .routes-container {
+        display: none;
+    }
+}
+
+/*@media only screen and (max-width: 992px) {*/
+/*    .Board {*/
+/*        display: none;*/
+/*    }*/
+/*}*/
+
+
+/*@media only screen and (max-width: 992px) {*/
+/*    .Board {*/
+/*        max-width: none;*/
+/*    }*/
+/*}*/
+
 .Sidebar {
     height: 100vh;
     width: 100vw;

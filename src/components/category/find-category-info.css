@@ -45,6 +45,7 @@
     font-weight: bold;
     color: #3A3A3A;
     margin-bottom: 10px;
+    margin-left: 20px;
 }
 
 .game-form-input {
@@ -53,6 +54,7 @@
     border-radius: 5px;
     border: none;
     width: 100%;
+
 }
 
 .game-form-select-container {
@@ -83,6 +85,7 @@
     border: none;
     width: 100%;
     background-color: #FFFFFF;
+    margin-left: 20px;
 }
 
 .game-form-submit-button {
@@ -92,7 +95,7 @@
     background-color: purple !important;
     border: none;
     border-radius: 10px;
-    padding: 10px 20px;
+    /*padding: 10px 20px;*/
     margin-top: 20px;
     cursor: pointer;
 }

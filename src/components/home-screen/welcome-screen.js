@@ -7,6 +7,8 @@ import * as service from "../../services/friends-service";
 import * as gameService from "../../services/create-game-service";
 import * as likeService from "../../services/likes-service";
 import * as userService from "../../services/users-services";
+import * as profileService from "../../services/profile-service"
+import {findProfileByUserId} from "../../services/profile-service";
 
 
 const WelcomeScreen = () => {
@@ -22,9 +24,29 @@ const WelcomeScreen = () => {
             try {
                 const profile = await LoggedInService.profile();
                 setProfile(profile);
+
+
                 setProfileLoaded(true);
                 const friends = await service.findFriendsByUserID(profile._id);
+
                 setFriends(friends);
+
+                const haveProfile = await profileService.findProfileByUserId(profile._id)
+                console.log(haveProfile)
+
+                if(haveProfile === null){
+                    const newProfile = {
+                        "user": profile._id,
+                    }
+
+                    try {
+
+                        //const createPro = await profileService.createProfile(newProfile)
+                    }
+                    catch (e){
+                        console.log("not found ")
+                    }
+                }
             } catch (e) {
                 //navigate('/signup');
             }
@@ -103,7 +125,7 @@ const WelcomeScreen = () => {
 
 
     const handleAddGems = () => {
-
+        navigate("/gems")
     }
 
     return (
@@ -144,7 +166,7 @@ const WelcomeScreen = () => {
                             return (
                                 <div key={game._id} className="home-screen__game-card card m-2">
                                     <div className="card-body">
-                                        <h5 className="home-screen__game-card__title card-title">@{game.username}</h5>
+                                        <h4 className="home-screen__game-card__title card-title">@{game.username}</h4>
                                         <h6 className="">
                                             Game Title: {game.name}
                                         </h6>

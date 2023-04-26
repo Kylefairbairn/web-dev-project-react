@@ -5,6 +5,7 @@ import * as friendService from "../../services/friends-service";
 import "./profile-screen.css";
 import * as gameService from "../../services/create-game-service";
 import * as userService from "../../services/users-services";
+import PlayGameMock from "../home-screen/mock-game";
 
 const ProfileScreen = () => {
     const navigate = useNavigate();
@@ -21,6 +22,7 @@ const ProfileScreen = () => {
     const [topCategory3Score, setTopCategory3Score] = useState("");
     const [friends, setFriends] = useState([]);
 
+
     useEffect(() => {
         async function fetchData() {
             try {
@@ -35,6 +37,7 @@ const ProfileScreen = () => {
                 );
                 setCorrectPercentage(average);
 
+
                 const categoryCounts = userProfile.category.reduce((acc, cur) => {
                     acc[cur.category] = (acc[cur.category] || 0) + cur.freq;
                     return acc;
@@ -45,15 +48,30 @@ const ProfileScreen = () => {
                     .slice(0, 3)
                     .map(([category, count]) => ({category, count}));
 
-                setTopCategory1(sortedCategories[0].category);
-                setTopCategory2(sortedCategories[1].category);
-                setTopCategory3(sortedCategories[2].category);
-                setTopCategory1Score(sortedCategories[0].count);
-                setTopCategory2Score(sortedCategories[1].count);
-                setTopCategory3Score(sortedCategories[2].count);
+
+                // setTopCategory1(sortedCategories[0].category);
+                // setTopCategory2(sortedCategories[1].category);
+                // setTopCategory3(sortedCategories[2].category);
+                // setTopCategory1Score(sortedCategories[0].count);
+                // setTopCategory2Score(sortedCategories[1].count);
+                // setTopCategory3Score(sortedCategories[2].count);
+
+                if (sortedCategories.length > 0 && sortedCategories[0].category !== "") {
+                    setTopCategory1(sortedCategories[0].category);
+                    setTopCategory1Score(sortedCategories[0].count);
+                }
+                if (sortedCategories.length > 1 && sortedCategories[1].category !== "") {
+                    setTopCategory2(sortedCategories[1].category);
+                    setTopCategory2Score(sortedCategories[1].count);
+                }
+                if (sortedCategories.length > 2 && sortedCategories[2].category !== "") {
+                    setTopCategory3(sortedCategories[2].category);
+                    setTopCategory3Score(sortedCategories[2].count);
+                }
 
                 const userFriends = await friendService.findFriendsByUserID(profile._id);
-                console.log(userFriends)
+
+
                 const promises = userFriends.map(async (friend) => {
                     const friendsData = await userService.findUserById(friend.friend);
                     return friendsData;
@@ -64,10 +82,10 @@ const ProfileScreen = () => {
 
 
             } catch (e) {
-                if(userLoggedIn == {}){
-                    navigate("/login")
-                }
-                console.log(userLoggedIn)
+                // if(userLoggedIn === {}){
+                //     navigate("/login")
+                // }
+                //navigate("/login")
             }
         }
         fetchData();
@@ -95,14 +113,14 @@ const ProfileScreen = () => {
                     <img className="profile-photo" src={`/images/${userLoggedIn.profilePhoto}`} alt="" />
                 </div>
                 <div className="profile-username">
-                    <h5>@{userLoggedIn.username}</h5>
-                    <h5>Account Type: {userLoggedIn.role}</h5>
+                    <h4>@{userLoggedIn.username}</h4>
+                    <h4>Account Type: {userLoggedIn.role}</h4>
                 </div>
                 <div>
                     <button onClick={handleEditClick} className={"edit-btn rounded-pill"} >Edit Profile</button>
                 </div>
                 <div>
-                    <button className="logout-btn btn btn-danger rounded-pill" onClick={logout}>
+                    <button className="logout-btn btn rounded-pill" onClick={logout}>
                         Logout
                     </button>
                 </div>
@@ -163,7 +181,7 @@ const ProfileScreen = () => {
                 </div>
             </div>
         ) : (
-            <h1>Not logged in</h1>
+            <PlayGameMock/>
         )
     );
 

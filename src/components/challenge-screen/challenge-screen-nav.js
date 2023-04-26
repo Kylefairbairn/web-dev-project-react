@@ -25,7 +25,7 @@ const ChallengeScreenNavigation = () => {
     }
 
     const handleMember = () => {
-        navigate("challenge/member")
+        navigate("/challenge/user")
     }
 
 

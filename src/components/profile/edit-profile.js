@@ -47,7 +47,7 @@ const EditProfile = () => {
         }
         //console.log(profile._id)
         userService.updateUser(profile._id,updatedUser)
-        navigate("/trivia/home")
+        navigate("/home")
     }
 
     return (

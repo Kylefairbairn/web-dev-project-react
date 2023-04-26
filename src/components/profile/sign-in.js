@@ -11,7 +11,8 @@ function LoginScreen() {
     const navigate = useNavigate();
     const login = async () => {
         await userService.login(user);
-        navigate("/profile");
+
+        //navigate("/profile");
     };
     return (
         <div>
